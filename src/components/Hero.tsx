@@ -13,7 +13,7 @@ const Hero = () => {
       id="home"
       className="
         relative min-h-screen flex items-center justify-center overflow-hidden bg-background
-        pt-24 md:pt-0
+        pt-12 sm:pt-14 md:pt-0
       "
       style={{
         backgroundImage: `linear-gradient(rgba(20, 25, 35, 0.95), rgba(25, 30, 45, 0.92)), url(${heroBg})`,
