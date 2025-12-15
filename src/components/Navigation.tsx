@@ -19,32 +19,29 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const navItems = ["home", "about", "skills", "projects", "contact"];
+  const navItems = ["home", "about", "skills", "projects","internships", "contact"];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-soft" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
+        isScrolled
+          ? "bg-black/70 backdrop-blur-md shadow-md"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent cursor-pointer border-none bg-none p-0"
-          >
-            Portfolio
-          </button>
-
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
+          
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center justify-center w-full gap-12">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-foreground hover:text-primary transition-colors capitalize cursor-pointer border-none bg-transparent text-base font-medium"
+                className="relative text-lg font-semibold tracking-wide text-white hover:text-yellow-300 transition-colors capitalize cursor-pointer group"
               >
                 {item}
+                <span className="absolute left-0 bottom-[-6px] w-0 h-[3px] bg-gradient-to-r from-yellow-400 to-white rounded-full transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -53,21 +50,21 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden ml-auto text-white hover:bg-white/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 bg-background border-t border-border">
+          <div className="md:hidden py-4 bg-black/90 backdrop-blur-md border-t border-border animate-fadeIn">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 transition-colors capitalize cursor-pointer border-none bg-transparent text-base"
+                className="block w-full text-left px-6 py-4 text-lg font-medium text-white hover:text-yellow-300 hover:bg-white/10 transition-colors capitalize cursor-pointer border-none bg-transparent"
               >
                 {item}
               </button>
